@@ -154,7 +154,7 @@ console.log(values[3]);
 
 console.log(values[4].name); // Abhinav, 
 
-*/
+
 
 const a = 'something';
 const b = [1,2.3];
@@ -178,6 +178,78 @@ console.log(typeof e);
 console.log(typeof f);
 console.log(typeof g);
 console.log(typeof h);
+
+// --------------------------------------------
+// Type conversion
+
+const a= 10
+// const b = "10"
+const b = "10abh" // not convertable hence NAN --> not a number
+const c = false;
+
+console.log( a, typeof a);
+console.log(b, typeof b);
+console.log(Number(b), typeof Number(b));
+console.log(Number(c));
+
+
+const num = 10
+const myNumbers = [12,3,4,5,6]
+
+console.log(num, String(num));
+console.log(c, String(c));
+console.log(myNumbers, String(myNumbers));
+
+
+
+const marks1 = "28.23dff"
+const marks2 = "28erer"
+
+console.log(Number(marks1), Number(marks2));
+// will parse the string and extract no and also always show integer value
+console.log(parseInt(marks1), parseInt(marks2));
+console.log(parseFloat(marks1), parseFloat(marks2));
+
+*/
+// --------------------------------------------
+// Type coersion --> automatic type conversion if their is arithmatic operation
+// JS execute left to right
+// +, -, *, /
+
+const a = "10"
+const b = "22"
+
+console.log(a+b); //addition but concatination
+console.log(Number(a)+Number(b)); //addition but concatination
+
+
+console.log(a-b);
+console.log(Number(a)-Number(b)); // will be done automatically by JS
+console.log(a*b);
+console.log(a/b);
+
+
+const x = 10
+const y= 20
+const z = "10"
+
+
+console.log(x+y+z); 
+console.log(z+x+y); // left to right
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
