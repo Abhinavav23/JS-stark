@@ -18,6 +18,7 @@ console.log('functions');
 // while defining the function we accept function parameters
 // while calling the function we pass arguments
 
+
 function printMyName(){
     console.log('Hi My name is Abhinav!!');
 }
@@ -28,7 +29,7 @@ printMyName();
 printMyName();
 printMyName();
 printMyName();
-*/
+
 
 
 function averageOfThreeNo(no1, no2, no3){
@@ -45,6 +46,70 @@ function averageOfThreeNo(no1, no2, no3){
 averageOfThreeNo(50, 30, 40); //
 
 
-5*5 --> 55555
-"5"*5 --> 55555
-"5"*"5" --> 55555
+// 5*5 --> 55555
+// "5"*5 --> 55555
+// "5"*"5" --> 55555
+
+
+
+// function expression
+const multiplication = function(no1, no2){
+    console.log('no1 is ', no1);
+    console.log('no2 is ', no2);
+    const result = no1*no2
+    console.log('multiplication is', result)
+}
+// "abc"*"abc" --> NAN
+// 
+
+multiplication(); 
+// will this log or nor
+// --> yes
+// --> no
+multiplication(10,20); 
+
+// function(){
+
+// }
+
+
+// Q1- divide 10,5 the no and multiply the result by 10
+// Q2- divide 20, 5 no and give me the square of the result
+
+
+const division = function(no1, no2){
+    console.log('start');
+    const res = no1/no2
+    console.log('result is ', res);
+    return res
+    console.log('end');
+}
+
+// return keyword to return anything from a function
+// after writing return statement no code will be executed in the func
+// if function doesn't return anything then it return by default undefined
+
+const ans1 = division(10,5);
+// console.log('ans1 is ', ans1*10);
+
+// const ans2 = division(20,5);
+// console.log('ans2 is ',ans2**2);
+*/
+
+function addition(){
+    console.log('start');
+    const result = no1+no2
+    console.log(result);
+    return
+    // return
+    console.log('result is ', result);
+    console.log('result is ', result);
+    console.log('result is ', result);
+    console.log('result is ', result);
+    console.log('result is ', result);
+    // return 
+}
+
+const res = addition(10, 60);
+console.log(res);
+
