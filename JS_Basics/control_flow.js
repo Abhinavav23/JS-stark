@@ -118,7 +118,7 @@ const arr = [10, 40, 59, 57, 30];
 for(let a of arr){
     console.log(a);
 }
-*/
+
 
 const arr = [10, 40, 29, 57, 30];
 
@@ -148,3 +148,38 @@ for(let i = 0; i<arr.length; i++){
     console.log('element is ', arr[i]);
 }
 
+
+let temp;
+
+function getTemp(stateName){
+    // let temp;
+    switch(stateName){
+        case 'Delhi':
+            console.log('inside case 1');
+            temp =40;
+            break;
+        case 'Calcutta': 
+            console.log('inside case 2');
+            temp = 42;
+            break;
+        case 'Bangalore': 
+            console.log('inside case 3');
+            temp = 32;
+            break;
+        default:
+            console.log('inside default case');
+            temp = 30
+    }
+}
+
+
+// getTemp('Bangalore');
+getTemp('Hyderabad');
+console.log('temp', temp);
+*/
+
+
+for(let i=0; i<5; i++){
+    console.log('sum ', i+i);
+    console.log('multiplication',i*i);
+}
