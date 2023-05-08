@@ -169,7 +169,7 @@ let printName = (myName) => {
 }
 printName('Abhinav');
 printName('Aswath');
-*/
+
 
 let getValue1 = () => 100
 
@@ -192,11 +192,100 @@ let res = getValue2(20, (no) => 2*no);
 console.log(res);
 
 
-
-
+// -------------default parameters ------
 
 
 // let a = 30
 // let myFync = function(){
 
 // }
+
+
+function sum(a=20, b=10){
+    console.log('a',a);
+    console.log('b',b);
+    return a+b
+}
+
+let res = sum(33);
+console.log(res);
+
+
+function PrintMyName(name='default'){
+    console.log('my name is ', name);
+}
+
+PrintMyName('Abhinav');
+
+
+// -----recursion-------
+
+function Sum(no){
+    if(no>0){
+        return no+Sum(no-1)
+    }else{
+        return no
+    }
+}
+
+
+let res = Sum(5);
+console.log(res);
+
+
+// function factorial(no){
+//     return factorial(no-1)
+// }
+
+factorial(23);
+// Uncaught RangeError: Maximum call stack size exceeded
+ 
+
+// find factorial 5
+
+
+// 5+4+3+2+1+0
+
+
+
+// ----try catch -----
+// try and catch are used to handle errors in JS code 
+console.log('start');
+
+
+try{
+    // code which has potential to throw error
+    console.log('starting try block');
+    let b = 10
+    console.log(b);
+    console.log('ending try block');
+}catch(err){    
+    // error handing code
+    console.log('inside catch block');
+    console.log(err);
+}finally{
+    // always execute irrespective of error or not
+    console.log('inside finally block');
+}
+
+*/
+try {
+  // to check if user is logged in
+  console.log('start');
+    //   -----
+    //   ----
+    //   ----
+    // throw "cant login"
+    // throw Error("Login Error");
+    // throw TypeError('type not match');
+    throw ReferenceError('type not match');
+
+    console.log('logged in successfullly');
+} catch (err) {
+    console.log('please login first');
+    console.log(err);
+}
+
+console.log(10 + 10);
+
+console.log("end");
