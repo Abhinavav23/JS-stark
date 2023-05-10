@@ -150,7 +150,6 @@ let splicedArr = arr.splice(-5,4);
 console.log(splicedArr); // 
 console.log(arr);
 
-*/
 
 let arr = [20, 30, 70] //[20, 30, 40, 50, 60]
 
@@ -162,5 +161,101 @@ console.log(arr);
 
 
 
+// Looping with some operation
+// multiply each el of the array by two
+// return me the el multiplied by its index
+let arr = [10,40,50,56,36,78]
+
+function multiplyByTwo(no){
+    return no*2
+}
+
+function sumWithIndex(no, index){
+    return no+index
+}
+
+// for(let i = 0; i<arr.length;i++){
+//     arr[i] = arr[i]*2
+// }
+// console.log(arr);
+
+// map is a higher order func which takes a callback fun
+// it calls the function for each of the element of the array
+// fun also recieves the el as first parameters, index as 2nd, complete array as 3rd 
+// we return the calculated res from the array which gets pushed into new array
+
+let multipliedByTwoArr = arr.map((el) => {
+    // console.log(el);
+    // console.log('');
+    return el*2
+})
+
+let multipliedWithItsIndexArr = arr.map((el, index, array) => {
+    console.log(el);
+    console.log(index);
+    console.log(array);
+    console.log('');
+    return el*index
+})
+
+let result1 = arr.map(multiplyByTwo);
+let result2 = arr.map(sumWithIndex);
+
+// console.log('multipliedByTwoArr', multipliedByTwoArr);
+console.log('multipliedWithItsIndexArr', multipliedWithItsIndexArr);
+// console.log('original Arr', arr);
+console.log(result1);
+console.log(result2);
+
+
+// filter --> same as map
+// return a boolean value and only value return true for el gets pushed into new array
+let arr = [2,33,50,25,38,55,66,3,9]
+
+let resArray = arr.filter((el) => {
+    return el>25
+})
+console.log(resArray);
+
+// findIndex
+// find
+// some
+// every
+*/
+
+let arr = [1,5,8,9]
+
+//reduce 
+// Q -> return sum of all the elements of array
+// first par --> te el from array for first time
+// sec par ---> second el from array
+
+// from 2nd time onwards
+// par1 --> returned res of previous fun call
+// 
+// let res1 = arr.reduce((par1, par2) => {
+//     console.log('par1', par1); //1, 6, 14
+//     console.log('par2', par2); //5, 8, 9
+//     console.log('');
+//     return par1+par2 //6, 14, 23
+// })
+
+// let res2 = arr.reduce((par1, par2) => {
+//     console.log('par1', par1); // 10, 11, 16, 24
+//     console.log('par2', par2); // 1, 5, 8, 9
+//     console.log('');
+//     return par1+par2 // 11, 16, 24, 33
+// }, 10)
+
+
+// console.log('res', res1);
+// console.log('res', res2);
+
+let newArr = [];
+let res = arr.forEach((el, i, arr) => {
+    newArr.push(el*i)
+})
+console.log(res);
+console.log(newArr);
 
 
