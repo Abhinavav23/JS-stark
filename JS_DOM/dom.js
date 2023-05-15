@@ -98,7 +98,7 @@ console.log(mainElUsingTag);
 // console.log(mainElUsingClass);
 const mainContainerUsingId = document.getElementById('myContainer')
 mainContainerUsingId.innerText = 'Updated Body Container';
-*/
+
 
 // select all the list items and add City in front of them
 // select all the li elements
@@ -121,12 +121,114 @@ liUsingQuerySel.forEach((el) => {
     el.style.backgroundColor = '#ddd'
 })
 
+const divOne = document.getElementById('one');
+
+// divOne.className = 'green'
+// divOne.className = 'bgDark'
+
+console.log(divOne.classList);
+divOne.classList.add('green'); 
+divOne.classList.add('bgDark'); 
+console.log(divOne.classList);
+
+divOne.title = 'first element';
+
+
 
 // liElUsingTagName.forEach(element => {
     
 // });
 
+// creating a p element
+const comElOne = document.createElement('p');
+comElOne.textContent = 'comment one'
+console.log(comElOne);
+
+const comElTwo = document.createElement('p');
+comElTwo.textContent = 'comment two'
+console.log(comElOne);
+
+// select the element where we want to add the created ele
+const commentSection = document.getElementById('comments');
+
+// add/append the element
+commentSection.appendChild(comElOne)
+commentSection.appendChild(comElTwo)
+
+comElOne.style.color = 'red';
+comElTwo.style.color = 'blue';
+
+// commentSection.append('some string')
+
+
+// create a table with 3 rows and 3 columns
+
+// create table tag
+const tableEl = document.createElement('table');
+// create thead tag
+const tableHeader = document.createElement('thead');
+// append it inside table
+tableEl.appendChild(tableHeader);
+console.log(tableEl);
+// create tr tag
+const tableRow = document.createElement('tr');
+// append it inside thead
+tableHeader.appendChild(tableRow)
+// create th tag 
+
+
+function createThAndAddContent(content){
+    const thEl = document.createElement('th');
+    thEl.textContent = content
+    return thEl
+}
+
+// const th1 = createThAndAddContent('product');
+// const th2 = createThAndAddContent('brand');
+// const th3 = createThAndAddContent('price');
+
+// // appned th inside tr
+// tableRow.appendChild(th1);
+// tableRow.appendChild(th2);
+// tableRow.appendChild(th3);
+
+const tableHeaderList = ['product', 'brand', 'price', 'color'];
+
+tableHeaderList.forEach((el) => {
+    const thEl = createThAndAddContent(el);
+    tableRow.appendChild(thEl)
+})
+
+
+// create similarly for tr and td and add rows
+
+
+const tableSection = document.getElementById('table');
+tableSection.appendChild(tableEl)
+*/
+
+
+// dom navigation
+const postsMainTag = document.getElementById('posts');
+console.log(postsMainTag);
+console.log(postsMainTag.childNodes[3].childNodes);
+console.log(postsMainTag.firstChild.nextSibling);
+console.log(postsMainTag.parentElement);
+console.log(postsMainTag.lastChild);
+console.log(postsMainTag.lastElementChild);
+console.log(postsMainTag.firstElementChild);
+
+
+
+const textNode = document.createTextNode('my post')
 
 // let str = 'bangalore'
 // let updatedStr = 'city' + str
 // 'city --> bangalore'
+
+let obj = {
+    name: 'Abhinav',
+    address: {
+        city: 'delhi'
+    }
+}
