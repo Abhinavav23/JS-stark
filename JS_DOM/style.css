@@ -9,4 +9,17 @@
     background-color: #ddd;
 }
 
+main {
+    background-color: blue;
+    height: 200px;
+    padding: 50px;
+}
+section{
+    background-color: red;
+    height: 100px;
+    padding: 50px;
+}
 
+button{
+    padding: 15px;;
+}
