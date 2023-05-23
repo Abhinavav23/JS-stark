@@ -123,10 +123,82 @@ console.log('arr', arr);
 console.log('studentArr', studentArr);
 console.log(...arr);
 console.log(arr);
-*/
 
+
+// merge the arrays
 let stGroup1 = ['Aswath', 'Kunal', 'Ujjwal'];
 let stGroup2 = ['Kamal', 'Adarsh', 'Hritik'];
 
 let allStudents = [...stGroup1, 'Moushami', ...stGroup2, 'Vishal'];
 console.log(allStudents);
+
+console.log(...stGroup1);
+
+// copying an array
+// const stGroupCopy = stGroup1
+const stGroupCopy = [...stGroup1]
+
+// const spreadRes = ...stGroup1
+
+function sum(x,y,z,p){
+    console.log('x', x);
+    console.log('y', y);
+    console.log('z', z);
+    console.log('p', p);
+    return x+y+z
+}
+
+const sumRes = sum(2,3,4);
+console.log('sumRes', sumRes);
+
+const arr = [46,89,75,100, 101];
+const sumRes1 = sum(...arr);
+console.log('sumRes1', sumRes1);
+
+const str  = 'abhinav'
+const arr = [...str]
+console.log(...str);
+console.log(...arr);
+
+const elCollection = document.getElementsByTagName('div');
+console.log(elCollection);
+const elColectionArr = [...elCollection];
+console.log(elColectionArr);
+
+
+const userInfo = {
+    username: 'abhinav',
+    email: 'abbhinav2mail'
+}
+
+const address = {
+     country: 'India',
+     city: 'Delhi',
+     pin: '10020'
+}
+
+const addressCopy = address
+
+const userDetails = {...userInfo, ...address, role: 'Instructor'};
+userDetails.
+console.log(userDetails);
+*/
+
+// rest operators
+// function sum(x,y,z){
+//     console.log(x+y+z);
+//     return x+y+z
+// }
+
+function sum(...numbers){
+    console.log(numbers);
+    const sumRes = numbers.reduce((prev, cur) => {
+        return prev+cur
+    })
+    console.log(sumRes);
+}
+
+sum(3,5)
+sum(1,3,9)
+sum(6,9,3,6,66,34);
+sum(6,9,3,6,66,34,66,44,99,100,777,899);
