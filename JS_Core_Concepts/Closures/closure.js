@@ -41,13 +41,17 @@ function addAndPrintNumber(){
     function addNumber(noToAdd){
         // let no = 0
         no = no+noToAdd
-        console.log(no);
+        // console.log(no);
+        return no
     }
     return addNumber
 }
+// if need to have a no please call addAndPrintNumber
+// 
 
 const addNo = addAndPrintNumber(); // no
-addNo(20); //20
+const res1 = addNo(20); //20
+console.log(res1);
 addNo(50); // 70
 addNo(60); // 130
 addNo(2000); // 2130
@@ -55,6 +59,9 @@ addNo(2000); // 2130
 const addNoAgain = addAndPrintNumber(); // no
 addNoAgain(30); // 
 addNoAgain(100); // 
+
+
+
 
 
 
