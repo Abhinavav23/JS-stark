@@ -138,7 +138,7 @@ const username = "noOfClass";
 console.log(obj[username]);
 console.log(obj["address"]);
 console.log(obj['role']);
-*/
+
 let newObj = {};
 
 newObj.newValue = 'value';
@@ -157,3 +157,95 @@ Object.assign(newObj, sourde1, {property5: 5});
 delete newObj.newValue
 delete newObj.property4
 console.log(newObj);
+
+
+let user = {
+    username: 'abhinav',
+    address: 'Delhi'
+}
+
+user.username = 'Aswath'
+// delete user.username
+
+console.log(user.username);
+console.log(user.address);
+console.log(user);
+
+Object.defineProperty(user, 'role', {
+    value: 'Instructor',
+    writable: true,
+    configurable: true,
+    enumerable: true
+})
+
+// writable --> 
+// config which allows us to override or update the value of a property
+// default is false
+
+// configurable
+// allows us to delete the property if true
+// default is false
+
+// enumerable
+// allows us to enumerate through the property of the object
+// default is false
+
+
+user.username = 'Suraj'
+user.role = 'Student';
+
+// delete user.role
+// delete user.username
+
+
+Object.defineProperties(user, {
+    noOfClasses: {
+        value: 5,
+        writable: true,
+        // enumerable: true,
+        configurable: true
+    },
+    subject: {
+        value: ['HTML', "CSS", "JS", "React"],
+        writable: true,
+        enumerable: true,
+        configurable: true
+    }
+})
+
+console.log(user);
+let keys = Object.keys(user);
+let values = Object.values(user);
+console.log('keys --> ',keys);
+// console.log('values---> ', values);
+
+let propertyNames = Object.getOwnPropertyNames(user);
+let propertyDescriptor = Object.getOwnPropertyDescriptors(user);
+console.log('propertyNames', propertyNames);
+console.log('propertyDescriptor', propertyDescriptor);
+*/
+
+// sealed
+let user = {
+    username: 'abhinav'
+}
+// user.username = 'Ujjwal' //update a existing property
+// user.address = 'india' // add new property
+// delete user.username //deleting property
+
+// Object.seal(user);
+user.username = 'Ujjwal' // updating existing property is possible
+user.address = 'India' //cant add new property
+delete user.username // cant delete a property as well
+
+console.log(user);
+console.log(Object.isSealed(user)); //check if an objct is sealed
+
+
+Object.freeze(user);
+user.username = 'Ujjwal' // updating existing property is not possible
+user.address = 'India' //cant add new property
+delete user.username // cant delete a property as well
+
+console.log(Object.isFrozen(user));
+
