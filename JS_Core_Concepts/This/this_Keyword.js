@@ -138,7 +138,7 @@ const user1 = new User('Suraj', 'India', 1998);
 // console.log(user1.calculateAge);
 console.log(user1.age);
 
-*/
+
 
 // getters and setters in Objects
 
@@ -173,7 +173,93 @@ console.log(user.firstname);
 console.log(user.middlename);
 console.log(user.lastname);
 
-test(hbsdfjvjbsf)
+// test(hbsdfjvjbsf);
+
+// Date Object
+
+console.log(Date);
+// returns the time as of the code is executing
+let date1 = new Date();
+console.log(date1);
+
+// 1 Jan 1970 00:00:00 GMT
+// number --> miliseconds --> 1000 milisecond = 1 sec
+console.log('');
+let date2 = new Date(100); //milisecond
+
+let day = 1000*60*60*24;
+let timeInMili = day*30*12*10 //3600 days
+console.log(timeInMili);
+
+// only one argument and type is number ---> miliseconds
+let date3 = new Date(timeInMili); //milisecond
+console.log(date2);
+console.log(date3);
+
+
+let date4 = new Date(-timeInMili);
+console.log(date4);
+
+// 2010
+// month - 01
+// date - 01
+//  time 00:00:00 in GMT/UTC
+// YYYY-MM-DD HH:MM:SS
+// Js validates the input and returns invalid date if there is 
+// wrong value passes
+// at least you have to pass year value
+// 2030/02/18
+let date5 = new Date('2030-02-20 10:59:33');
+console.log(date5);
+
+// multiple arguments
+// 1st -> year value
+// 2nd --> month --> starts from 0
+// 3rd --> date
+// 4th --> HH
+// 5th --> min
+// 6th --> ss
+// 7th --> miliseconds
+
+let date6 = new Date(2013, 4, 15, 34, 85, 83, 83); //11: 26 : 23
+console.log(date6);
+
+
+const today = new Date();
+console.log(today);
+console.log(today.getTime()); //returns time in mili sec staring 1 jan 1970
+console.log(today.getFullYear());
+console.log(today.getMonth());
+console.log(today.getDay()); //days from week starting from 0 (SUN)
+console.log(today.getDate()); //days from week
+console.log(today.getMinutes()); //days from week
+*/
+console.log(Date.now());
+let i =0
+while(i< 10000000){
+    i++
+}
+console.log(Date.now());
+console.log(Date.now());
+
+
+
+
+
+
+// implement your own date functionality
+function myDate(...params){
+
+
+}
+
+
+
+
+
+
+
+
 
 
 
