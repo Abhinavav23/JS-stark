@@ -98,13 +98,17 @@ console.log(cricketPlayer.type);
 // console.log(cricketPlayer.__proto__);
 let protoTypeOfCri = Object.getPrototypeOf(cricketPlayer);
 console.log(protoTypeOfCri);
-*/
 
 
+
+// we are trying to implement our own prototypal/protypical inheritance
 // function constructor
 function Person(firstName, lastName){
     this.firstName = firstName,
     this.lastName = lastName
+    // this.printFullName = function(){
+    //     return `My full Name is ${this.firstName} ${this.lastName}`
+    // }
 }
 
 Person.prototype.printFullName = function(){
@@ -116,30 +120,62 @@ Person.prototype.printFullName = function(){
 function Player(fNAme, lName, occupation, level){
     // this.firstName = fNAme,
     // this.lastName = lName
+
+    // 1. get all the properties from Person --> call Person()
+    // 2. create only one object  --> cant use new while calling Person
+    // 3. we want same instance or object to have properties from player and Person
+    // 4. we need some way to pass the ref to Person Function or call the Person with same ref
+    // 5. to use call method available on functions
+
     // a way to call person and pass fNAme and lName
     // a way to pass the context for which we want firstname and last name
+
+    // calling parent constructor 
     Person.call(this, fNAme, lName);
     this.occupation = occupation,
     this.level = level
+    // this.printPlayerInfo = function(){
+    //     return `I am a ${this.occupation} and my level of play is ${this.level}`
+    // }
 }
-Player.prototype = Object.create(Person.prototype)
+
+
+Player.prototype = Object.create(Person.prototype);
+// reset the constructor
+Player.prototype.constructor = Player;
+// add property on prototypes
+Player.prototype.printPlayerInfo = function(){
+    return `I am a ${this.occupation} and my level of play is ${this.level}`
+}
 // cricketplayer --> experties, game-> cricket
 
-const person1 = new Person('Shubham', 'Kumar');
-console.log(person1);
-console.log(person1.printFullName());
+// const person1 = new Person('Shubham', 'Kumar');
+// console.log(person1);
+// console.log(person1.printFullName());
 
-const person2 = new Person('Aswath', 'Kumar');
-console.log(person2);
-console.log(person2.printFullName());
+// const person2 = new Person('Aswath', 'Kumar');
+// console.log(person2);
+// console.log(person2.printFullName());
 
-const player1 = new Player('Shubham', 'Kumar', 'play', 'national');
+const player1 = new Player('Shubham', 'Kumar', 'player', 'national');
 console.log(player1);
 console.log(player1.printFullName());
+// console.log(player1.__proto__.constructor)
+console.log(player1.printPlayerInfo());
+
+console.log(Object.keys(player1)); // it will give the properties available on instance
+console.log(Object.values(player1)); // it will give the properties available on instance / instance members
+
+// prototype properties will also be accessible sing for in loop
+for(let key in player1){
+    console.log('key --->', key);
+}
 
 const player2 = new Player('Ujjwal', 'Kumar', 'coach', 'state');
 console.log(player2);
 console.log(player2.printFullName());
+console.log(player2.printPlayerInfo());
+
 
 const player3 = new Player('Dinesh', 'Kumar', 'play', 'international');
 console.log(player3);
@@ -150,7 +186,83 @@ console.log(player3.printFullName());
 // property descriptors
 
 
-let obj = {
-    username: 'abhinav'
+// let obj = {
+//     username: 'abhinav'
+// }
+
+// obj.address = 'India'
+
+// obj = {
+//     myname: 'abhi'
+// }
+
+
+// avoid extending built in objects
+
+let arr1 = [1,4,6,8]
+
+arr1.push(30)
+console.log(arr1);
+console.log(Array.prototype.push);
+
+// in case of writing polyfills
+// check is a specific property is available if not then write your own implementations
+if(!Array.prototype.push){
+    Array.prototype.push = function(val){
+        console.log('value to be pushed is ', val);
+    }
 }
+
+
+arr1.push(100)
+console.log(arr1);
+
+let arr2 = [3,7,0]
+arr2.push(50);
+console.log(arr2);
+
+*/
+// Polymorphism  --> which exist in many forms
+// 
+
+console.log(test); //execution phase
+
+function test(){
+    console.log('running test');
+}
+
+function test(){
+    console.log('running overridden test');
+}
+
+test();
+
+const testAgain = function(){
+    console.log('testagain');
+}
+
+// const testAgain = function(){
+//     console.log('test again overridden');
+// }
+
+// function Person(username, age){
+//     this.username = username,
+//     this.age = age
+//     this.printDetails = function(){
+//         console.log(`my name is ${this.name} and my age is ${this.age}`);
+//     }
+// }
+
+// function Player(username, age, game, retireAge){
+//     Person.call(this, username, age)
+//     this.game = game,
+//     this.retireAge = retireAge
+//     this.printDetails = function(){
+//         console.log(`my game is ${this.game} and my retire age is ${this.retireAge}`);
+//     }
+// }
+
+// const player1 = new Player('Abhinav', 30, 'cricket', 38);
+// console.log(player1);
+// player1.printDetails()
 
