@@ -128,7 +128,7 @@ function Player(fNAme, lName, occupation, level){
     // 5. to use call method available on functions
 
     // a way to call person and pass fNAme and lName
-    // a way to pass the context for which we want firstname and last name
+    // a way to pass the context for which we want first name and last name
 
     // calling parent constructor 
     Person.call(this, fNAme, lName);
@@ -221,20 +221,21 @@ let arr2 = [3,7,0]
 arr2.push(50);
 console.log(arr2);
 
-*/
+
 // Polymorphism  --> which exist in many forms
 // 
 
 console.log(test); //execution phase
 
+test(); //execution
+
 function test(){
     console.log('running test');
 }
-
+test(); 
 function test(){
     console.log('running overridden test');
 }
-
 test();
 
 const testAgain = function(){
@@ -244,25 +245,81 @@ const testAgain = function(){
 // const testAgain = function(){
 //     console.log('test again overridden');
 // }
+*/
 
-// function Person(username, age){
-//     this.username = username,
-//     this.age = age
-//     this.printDetails = function(){
-//         console.log(`my name is ${this.name} and my age is ${this.age}`);
-//     }
-// }
 
-// function Player(username, age, game, retireAge){
-//     Person.call(this, username, age)
-//     this.game = game,
-//     this.retireAge = retireAge
-//     this.printDetails = function(){
-//         console.log(`my game is ${this.game} and my retire age is ${this.retireAge}`);
-//     }
-// }
 
-// const player1 = new Player('Abhinav', 30, 'cricket', 38);
-// console.log(player1);
-// player1.printDetails()
+function Person(username, age){
+    this.username = username,
+    this.age = age
+    // this.printDetails = function(){
+    //     console.log(`my name is ${this.name} and my age is ${this.age}`);
+    // }
+}
+
+Person.prototype.printDetails = function(){
+    console.log(`my name is ${this.username} and my age is ${this.age}`);
+}
+
+function Player(username, age, game, retireAge){
+    Person.call(this, username, age)
+    this.game = game,
+    this.retireAge = retireAge
+    // this.printDetails = function(){
+    //     console.log(`my game is ${this.game} and my retire age is ${this.retireAge}`);
+    // }
+}
+function inherit(Child, Parent){
+    // setting the prototype
+    Child.prototype = Object.create(Parent.prototype);
+    // resetting the constructor
+    Child.prototype.constructor = Child
+}
+
+
+
+// parent and child
+// Player.prototype = Object.create(Person.prototype);
+// Player.prototype.constructor = Player;
+// method overriding
+inherit(Player, Person);
+Player.prototype.printDetails = function(){
+    console.log(`my game is ${this.game} and my retire age is ${this.retireAge}`);
+}
+
+
+function Actor(username, age, genre){
+    Person.call(this, username, age);
+    this.genre = genre
+}
+
+// Actor.prototype = Object.create(Person.prototype);
+// Actor.prototype.constructor = Actor;
+inherit(Actor, Person);
+// method overriding
+Actor.prototype.printDetails = function(){
+    console.log(`I am an actor and i can act in ${this.genre}`);
+}
+
+const person1 = new Person('Abhinav', 30);
+console.log(person1.username);
+console.log(person1.age);
+person1.printDetails(); // form 1
+
+const player1 = new Player('virat', 32, 'cricket', 40);
+console.log(player1);
+console.log(player1.username);
+player1.printDetails(); //form2
+
+const player2 = new Player('Rohit', 33, 'cricket', 39);
+// console.log(player2);
+
+const actor1 = new Actor('Hrithik', 44, 'Everything');
+console.log(actor1);
+actor1.printDetails();
+
+// When not to use inheritance 
+// disadvantages of inheritance
+// composition can be used and it can be implemented using mixin
+
 
