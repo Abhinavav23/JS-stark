@@ -245,13 +245,15 @@ const testAgain = function(){
 // const testAgain = function(){
 //     console.log('test again overridden');
 // }
-*/
+
 
 
 
 function Person(username, age){
     this.username = username,
     this.age = age
+    this.legs = 2
+    // this.address = address
     // this.printDetails = function(){
     //     console.log(`my name is ${this.name} and my age is ${this.age}`);
     // }
@@ -261,8 +263,19 @@ Person.prototype.printDetails = function(){
     console.log(`my name is ${this.username} and my age is ${this.age}`);
 }
 
-function Player(username, age, game, retireAge){
-    Person.call(this, username, age)
+Person.prototype.getBirthYear = function(){
+    const today = new Date();
+    const curYear = today.getFullYear()
+    console.log(curYear);
+    console.log(curYear-this.age);
+}
+
+Person.prototype.runningSpeed  = function(){
+    console.log(this.age*0.33*this.legs);
+}
+
+function Player(username, age, address, game, retireAge){
+    Person.call(this, username, age, address)
     this.game = game,
     this.retireAge = retireAge
     // this.printDetails = function(){
@@ -275,7 +288,6 @@ function inherit(Child, Parent){
     // resetting the constructor
     Child.prototype.constructor = Child
 }
-
 
 
 // parent and child
@@ -301,6 +313,10 @@ Actor.prototype.printDetails = function(){
     console.log(`I am an actor and i can act in ${this.genre}`);
 }
 
+function PersonWithDisabilities(){
+
+}
+
 const person1 = new Person('Abhinav', 30);
 console.log(person1.username);
 console.log(person1.age);
@@ -310,6 +326,8 @@ const player1 = new Player('virat', 32, 'cricket', 40);
 console.log(player1);
 console.log(player1.username);
 player1.printDetails(); //form2
+player1.getBirthYear();
+
 
 const player2 = new Player('Rohit', 33, 'cricket', 39);
 // console.log(player2);
@@ -317,9 +335,71 @@ const player2 = new Player('Rohit', 33, 'cricket', 39);
 const actor1 = new Actor('Hrithik', 44, 'Everything');
 console.log(actor1);
 actor1.printDetails();
+actor1.getBirthYear();
+
+
 
 // When not to use inheritance 
 // disadvantages of inheritance
 // composition can be used and it can be implemented using mixin
 
+*/
 
+// composition
+// 1. separate out the functionalities into separate objects
+
+let ageUtility = {
+    getBirthYear: function (){
+        console.log(`my age`);
+    },
+    getDay: function(){
+        console.log('getting age');
+    }
+}
+
+let printDetails = {
+    printDetails: function(){
+        console.log('printing details');
+    }
+}
+
+let runningUtility = {
+    runningSpeed: function(){
+        console.log('running speed');
+    }
+}
+
+let typeOfDisbility = {
+    printDisability: function(){
+        console.log('disbled cant run');
+    }
+}
+
+let actorGenre = {
+    printGenre: function(){
+
+    }
+}
+
+let player1 = {
+    game: 'cricket',
+    username: 'Virat',
+    age: 32,
+    // getBirthYear: function (){
+    //     console.log(`my age`);
+    // },
+    // printDetails: function(){
+    //     console.log('printing details');
+    // }
+}
+
+let disabledPerson = {
+    username: 'username',
+    age: 40
+}
+
+
+Object.assign(player1,ageUtility, printDetails, runningUtility);
+Object.assign(disabledPerson,ageUtility, printDetails, typeOfDisbility);
+console.log(player1);
+console.log(disabledPerson);
