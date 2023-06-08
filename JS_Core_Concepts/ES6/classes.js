@@ -1,3 +1,4 @@
+/*
 // function Person(name, address){
 //     this.name  = name,
 //     this.address = address
@@ -10,9 +11,12 @@
 
 
 // diff way of writing function constructor
-// syntactic sugar to function constructor
-
+// syntactic sugar to function constructor / way to write object oriented code
+// 'use strict'
 class Person{
+    // can only be accessed by the class not by its instances
+    static defaultAddress = 'Earth';
+    noOfLegs = 2
     constructor(name, address){
         this.name = name,
         this.address = address
@@ -22,20 +26,151 @@ class Person{
         //     console.log(`my name is ${this.name} and address is ${this.address}`);
         // }
     }
-    // dont use function keyword
+    // don't use function keyword
     // it gets added on the prototype by default
+    // by default class runs the code in strict mode in JS
     printInfo(){
+        console.log(this);
         console.log(`my name is ${this.name} and address is ${this.address}`);
+    }
+
+    static printDefaultAddress(){
+        // console.log(this);
+        // console.log(`by default i live on ${this.defaultAddress}`); //undef
+        console.log(`by default i live on ${Person.defaultAddress}`);
+    }
+}
+// classes are internally nothing but function
+// console.log(typeof Person);
+
+const person1 = new Person('Ujjwal', 'India');
+// console.log(person1.name);
+// console.log('');
+// console.log(person1);
+// person1.printInfo();
+// console.log(person1.defaultAddress);
+
+console.log('');
+
+const person2 = new Person('Aswath', 'India');
+// console.log(person2);
+// person2.printInfo();
+// console.log(person2.address);
+
+// static property 
+// console.log(person2.defaultAddress);
+console.log(Person.defaultAddress);
+
+// person2.printDefaultAddress();
+// console.log(person2.printDefaultAddress);
+
+Person.printDefaultAddress();
+
+
+// we creating a new property on the object
+// person2.defaultAddress = 'Marsh';
+// person2['defaultAddress'] = 'Marsh';
+// console.log(person2.defaultAddress);
+// console.log(person2);
+
+
+
+
+// storing the method in a variable
+const myFunc = person2.printInfo;
+// console.log(myFunc);
+// myFunc()
+
+// let obj = {
+//     username: 'abhinav'
+// }
+// console.log(obj.address);
+
+
+
+class Vehicle{
+    type = 'on road';
+    category = 'general';
+    constructor(name, price){
+        this.name = name,
+        this.price = price
+    }
+
+    // getInsuranceCharges(){
+    //     let insurancePercent = 0.05
+    //     if(this.name.length>6){
+    //         insurancePercent = 0.1
+    //     }
+    //     return this.price*insurancePercent
+    // }
+
+    // reading purpose --> custom code
+    get insuranceCharges(){
+        let insurancePercent = 0.05
+        if(this.name.length>6){
+            insurancePercent = 0.1
+        }
+        return this.price*insurancePercent
+    }
+
+    // writing purpose --> some custom code
+    set insuranceCharges(amount){
+        console.log('insurance amount--->', amount);
+        if(amount>500000){
+            this.category = 'expensive'
+        }
+        console.log(`your on road price ${this.price+amount}`);
+    }
+
+}
+
+const vehicle1 = new Vehicle('Creta', 1500000);
+console.log(vehicle1.name);
+console.log(vehicle1.price);
+// console.log(vehicle1.getInsuranceCharges());
+console.log(vehicle1.insuranceCharges);
+vehicle1.insuranceCharges = 100000;
+console.log(vehicle1.category);
+
+console.log('');
+const vehicle2 = new Vehicle('BMW', 5500000);
+vehicle2.insuranceCharges = 600000;
+console.log(vehicle2.category);
+*/
+
+
+class Vehicle{
+    category = 'general';
+    constructor(name, price){
+        console.log('Vehicle constructor called');
+        this.name = name,
+        this.price = price
+    }
+
+    getDetails(){
+        console.log(`my vehicle is ${this.name} and i bought it for ${this.price}`);
     }
 }
 
-const person1 = new Person('Ujjwal', 'India');
-console.log(typeof Person);
-console.log(person1);
-person1.printInfo()
+class Bike extends Vehicle{
+    constructor(name, price, noOfWheels, mileage){
+        console.log('bike constructor called');
+        super(name, price);
+        this.noOfWheels = noOfWheels,
+        this.mileage = mileage
+    }
 
-const person2 = new Person('Aswath', 'India');
-console.log(person2);
-person2.printInfo();
+    calculateMilage(){
+        console.log(`mileage is 30kmpl`);
+    }
+}
+
+const bullet = new Bike('RE Bullet', 175000, 2, 20);
+console.log(bullet);
+console.log(bullet.name);
+
+bullet.calculateMilage();
+bullet.getDetails();
+
 
 
