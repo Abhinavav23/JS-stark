@@ -136,7 +136,7 @@ console.log('');
 const vehicle2 = new Vehicle('BMW', 5500000);
 vehicle2.insuranceCharges = 600000;
 console.log(vehicle2.category);
-*/
+
 
 
 class Vehicle{
@@ -152,6 +152,9 @@ class Vehicle{
     }
 }
 
+const vehicle1 = new Vehicle('honda', 120000);
+vehicle1.getDetails();
+
 class Bike extends Vehicle{
     constructor(name, price, noOfWheels, mileage){
         console.log('bike constructor called');
@@ -163,6 +166,12 @@ class Bike extends Vehicle{
     calculateMilage(){
         console.log(`mileage is 30kmpl`);
     }
+
+    // method overriding 
+    getDetails(){
+        console.log(`my bike name is ${this.name} and i bought it for ${this.price}`);
+        console.log(`my bike's mileage is ${this.mileage}kmpl and it has ${this.noOfWheels} wheels`);
+    }
 }
 
 const bullet = new Bike('RE Bullet', 175000, 2, 20);
@@ -171,6 +180,101 @@ console.log(bullet.name);
 
 bullet.calculateMilage();
 bullet.getDetails();
+*/
+
+
+// private properties in class
+
+class Student{
+    static contestDate = '10 June'
+    // private property of student class
+    #_instructor = 'Abhinav'
+    constructor(name, batch){
+        this.name = name,
+        this.batch = batch
+    }
+
+    statusOfStudent(){
+        // let instructor = 'Abhinav';
+        if(this.batch === 'stark'){
+            console.log(` batch is running and topic is FSD`);
+        } else{
+            console.log(`we don't have much info about the batch`);
+        }
+    }
+
+    totalClassesInWeek(){
+        if(this.#_instructor === 'Abhinav'){
+            console.log('there are 5 classes in a week');
+        }else{
+            console.log(`there are 6 classes in  week`);
+        }
+        this.#getTimings();
+    }
+
+    // private method of student class
+    #getTimings(){
+         console.log(`9 to 11 pm`);
+    }
+}
+
+const subham = new Student('Shubham', 'stark');
+// console.log(subham.name);
+// console.log(subham.batch);
+// subham.statusOfStudent();
+// console.log(subham._instructor);
+subham.totalClassesInWeek();
+// console.log(subham.getTimings());
+
+const kamal = new Student('Kamal', 'stark');
+// console.log(Student._instructor); //undefined
+// console.log(kamal.contestDate);
+// console.log(Student.contestDate);
+// console.log(Student.instructor);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function test(){
+//     // ddfvdf
+// }
+
+// const test = () => {
+
+// }
+
+// function test(){
+//     // ddfvd b ccghchgchgc b b
+// }
+
+
+let a = 200;
+// console.log(a);
+
+function myFunc(){
+    let x = 50;
+    console.log(a);
+    console.log(x);
+
+    function inner(){
+        console.log(a);
+        console.log(x);
+    }
+    inner()
+}
+
+// console.log(x);
