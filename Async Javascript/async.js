@@ -33,7 +33,7 @@ console.log('end');
 // Async way
 // we will not wait for code which can take time ex: api call
 // also we have multiple ways to execute or delay some piece of code with respect to time ex: setTimeout, setInterval
-*/
+
 
 // setTimeout
 // used to delay the code with some time
@@ -61,7 +61,7 @@ console.log('start');
 // 1 arg --> function which need to be called after some time
 // 2nd --> time after which function needs to be called in mili second(1000ms = 1 sec)
 // 3rd,4th, 5th and so on --> which will go as argument to the function as parameters
-// setTimeout on calling returns a unique id which can be used for cleanup of timer
+// setTimeout on calling returns a unique id (number) which can be used for cleanup of timer
 
 console.log('end');
 
@@ -82,7 +82,6 @@ console.log(id3);
 
 
 
-
 // function higher(cb){
 //     console.log('calling the fun');
 //     cb();
@@ -97,8 +96,93 @@ console.log(id3);
 // web APIS in browser
 
 
-function calculate(){
-    return 10
-}
+// function calculate(){
+//     return 10
+// }
 
-let res = calculate()
+// let res = calculate()
+
+
+console.log('start'); // 1
+
+let a = 10
+
+function printValue(){
+    let x = 10;
+    console.log('printing value-->', x);
+}
+const timer1 = setTimeout(printValue, 0); // web apis printValue--> 0sec
+
+const timer2 = setTimeout((value) => {
+    console.log('second timer', value);
+}, 0, 'Abhinav');
+
+console.log('end');
+
+// 1
+// start
+// printing value--> 10
+// end
+// second time
+
+// 2
+// start
+// end
+// second time
+// printing value--> 10
+
+// 3
+// start
+// end
+// printing value--> 10
+// second time
+
+
+
+// to clear the timer whose id is passed as an argument
+// to cleanup the memory acquired by the timers
+// setTimeout(() => {
+//     console.log('clearing timer');
+//     console.log(timer1);
+//     console.log(timer2);
+//     clearTimeout(timer1);
+//     clearTimeout(timer2);
+// }, 2000)
+
+
+
+// function outer(){
+//     let a = 10 
+//     let b = 20 //garbage collected automated process
+//     function inner(){
+//         console.log(a);
+//     }
+//     return inner
+// }
+
+// const res = outer();
+*/
+
+
+// setInterval 
+// takes same arguments like 
+// 1 --> asyncronous callback func
+// 2 --> timer
+
+// diff--> it will keep on calling the function after the time 
+
+console.log('start');
+
+const intervalId = setInterval(() => {
+    console.log('running interval');
+}, 0)
+
+console.log(intervalId);
+console.log('end');
+
+clearInterval(intervalId);
+
+// start
+// 1
+// end
+// running interval ---> 
