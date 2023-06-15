@@ -50,7 +50,7 @@ setTimeout((shirts) => {
 // failed/rejected ---> the call is failed -- network failure/ server is down/ req is wrong
 // settled / completed--> either success or rejected
 
-*/
+
 // can be created using Promise constructor
 // it takes callback
 // callback will have 2 arg
@@ -114,3 +114,83 @@ getShirtBrands(0)
 // console.log(res);
 
 // console.log(calculate());
+
+let obj = {
+    onlineFriends: ['Fr1', 'Fr2', 'Fr3'],
+    address: {
+        city: 'Delhi', 
+        pin: 812005
+    },
+    messageCount: 5
+}
+
+// console.log(obj.onlineFriends);
+
+let a = 10
+let arr = [12,3,4]
+
+
+
+// json methods
+// convert object to json 
+// convert json to object
+
+const user = {
+    username: 'abhinav',
+    password: '12345',
+    classes: ['mon', 'tues', 'wed']
+};
+console.log(user);
+console.log(user.classes);
+
+// from FE to BE
+// convert the object into JSON
+const userJson = JSON.stringify(user);
+console.log(userJson);
+
+// to convert the json type into Object 
+const userObj = JSON.parse(userJson);
+console.log(userObj);
+*/
+
+// fetch API which is available in JS by the browser
+// it is used to make api calls
+// will call as function and pass the URL of the api that we want to call
+// on calling fetch by default it returns a promise
+// on successful call it will resolve and returns a response object
+
+fetch("https://jsonplaceholder.typicode.com/albums")
+.then((res) => {
+    console.log('promise success 1');
+    console.log(res);
+    const returnedRes = res.json();
+    return returnedRes
+    // returnedRes
+    // .then((data) => {
+    //     console.log(data);
+        
+    // })
+    // .catch((err) => {
+    //     console.log(err);
+    // })
+})
+.then((data)=>{
+    console.log('promise success 2');
+    console.log(data);
+})
+.catch((err) => {
+    console.log('from catch');
+    console.log(err);
+})
+.finally(() => {
+    console.log('completed');
+})
+
+
+// if(true){
+//     if(true){
+
+//     }
+// }else{
+//     console.log('false');
+// }
