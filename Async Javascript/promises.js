@@ -151,7 +151,7 @@ console.log(userJson);
 // to convert the json type into Object 
 const userObj = JSON.parse(userJson);
 console.log(userObj);
-*/
+
 
 // fetch API which is available in JS by the browser
 // it is used to make api calls
@@ -187,6 +187,7 @@ fetch("https://jsonplaceholder.typicode.com/albums")
 })
 
 
+
 // if(true){
 //     if(true){
 
@@ -194,3 +195,188 @@ fetch("https://jsonplaceholder.typicode.com/albums")
 // }else{
 //     console.log('false');
 // }
+
+const getNotification = (username) => {
+    const promise =  new Promise((res, rej) => {
+        if(username !== ''){
+            res('you have 10 new notification')
+        } else{
+            rej('username cant be empty')
+        }
+    });
+    return promise
+}
+
+const getMessage = (username) => {
+    const promise =  new Promise((res, rej) => {
+        if(username !== ''){
+            res('you have 5 messages')
+        } else{
+            rej('username cant be empty for getting messages')
+        }
+    });
+    return promise
+}
+
+const getPosts = (username) => {
+    const promise =  new Promise((res, rej) => {
+        if(username !== ''){
+            res(['post1', 'post2', 'post3'])
+        } else{
+            rej('username cant be empty for getting posts')
+        }
+    });
+    return promise
+}
+
+// promise 1
+// getNotification('abhinav')
+// .then((data) => {
+//     console.log(data);
+// })
+// .catch((err) => {
+//     console.log(err);
+// })
+
+// promise 2
+// getMessage('abhinav')
+// .then((data) => {
+//     console.log(data);
+// })
+// .catch((err) => {
+//     console.log(err);
+// })
+
+// // promise 3
+// getPosts('abhinav')
+// .then((data) => {
+//     console.log(data);
+// })
+// .catch((err) => {
+//     console.log(err);
+// })
+
+
+// Promise.all()
+// take multiple promises as arguments as array
+// returns us an array of results recieved from promises when all promises are successful
+// if any of the promises are failed then catch block will get executed
+// the first failed promise error will be recieved in catch block
+
+Promise.all([getNotification('abhinav'),getMessage(''),getPosts('')])
+.then((value) => {
+    console.log('success');
+    console.log(value);
+})
+.catch((err) => {
+    console.log('failure');
+    console.log(err);
+})
+
+// promise.allSettled
+// it returns an array of objects --> status, value in success case
+// report card
+
+Promise.allSettled([getNotification(''),getMessage(''),getPosts('')])
+.then((value) => {
+    console.log('success');
+    console.log(value);
+})
+.catch((err) => {
+    console.log('failure');
+    console.log(err);
+})
+
+// it is exact vice versa of promise.all
+// if any of the promise is successful then it will run then
+Promise.any([getNotification(''),getMessage('abhinav'),getPosts('')])
+.then((value) => {
+    console.log('success');
+    console.log(value);
+})
+.catch((err) => {
+    console.log('failure');
+    console.log(err);
+})
+
+
+// whoever first either resolves or rejects
+Promise.race([getNotification('abhinav'),getMessage('abhinav'),getPosts('')])
+.then((value) => {
+    console.log('success');
+    console.log(value);
+})
+.catch((err) => {
+    console.log('failure');
+    console.log(err);
+})
+*/
+
+const getNotification = (username) => {
+    const promise =  new Promise((res, rej) => {
+        if(username !== ''){
+            res('you have 10 new notification')
+        } else{
+            rej('username cant be empty')
+        }
+    });
+    return promise
+}
+
+const getMessage = (username) => {
+    const promise =  new Promise((res, rej) => {
+        if(username !== ''){
+            res('you have 5 messages')
+        } else{
+            rej('username cant be empty for getting messages')
+        }
+    });
+    return promise
+}
+
+const getPosts = (username) => {
+    const promise =  new Promise((res, rej) => {
+        if(username !== ''){
+            res(['post1', 'post2', 'post3'])
+        } else{
+            rej('username cant be empty for getting posts')
+        }
+    });
+    return promise
+}
+
+
+// getNotification('abhinav')
+// .then((data) => {
+//     console.log(data);
+// })
+// .catch((err) => {
+//     console.log(err);
+// })
+// .finally(() => {
+//     console.log('always run');
+// })
+
+
+// async await --> handling of promises
+// by putting a await before the function call which returns a promise
+// you should make the function where the async code is present as async function
+
+const makeApiCalls = async() => {
+    try{
+        console.log('start');
+        // if promise gets resolved 
+        // we get the resolved value, stored inside data variable
+        // if error is thrown then 
+        // no further code will be executed and we will jump to catch block
+        const data = await getNotification('abhinav');
+        console.log(data);
+        console.log('end');
+    }catch(err){
+        console.log(err);
+    }finally{
+        console.log('it will always run');
+    }
+}
+
+makeApiCalls()
