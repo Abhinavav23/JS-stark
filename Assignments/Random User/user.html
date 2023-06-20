@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="user.css">
+    <title>Random User</title>
+</head>
+<body>
+    <h2>User Details</h2>
+    <section>
+        <img src="" alt="user profile image" id="profile-image">
+        <div id="user-name"></div>
+        <br>
+    </section>
+
+       <!--buttons to show additional info  -->
+    <section>
+        <button data-attr = "age" data-attr2 = "age 2"class="additional-info-button">Age</button>
+        <button data-attr = "email" class="additional-info-button">Email</button>
+        <button data-attr = "phone" class="additional-info-button">Phone</button>
+
+        <aside>
+            <h4>Additional Info</h4>
+            <article id="additional-info"></article>
+        </aside>
+    </section>
+
+    <button id="get-user">get User</button>
+    <input type="text" value="abhinav">
+    <script src="./user.js"></script>
+</body>
+</html>
